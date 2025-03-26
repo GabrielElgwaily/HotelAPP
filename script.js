@@ -1,4 +1,3 @@
-// JavaScript code
 const hotels = [
     {
       name: "Sunrise Resort",
@@ -23,6 +22,7 @@ const hotels = [
   const hotelGrid = document.getElementById("hotelGrid");
   const starFilter = document.getElementById("starFilter");
   const checkinInput = document.getElementById("checkin");
+  const applyFilters = document.getElementById("applyFilters");
   
   function renderHotels() {
     const starValue = starFilter.value;
@@ -47,8 +47,13 @@ const hotels = [
     });
   }
   
+  // Star filter updates immediately
   starFilter.addEventListener("change", renderHotels);
-  checkinInput.addEventListener("input", renderHotels);
   
-  renderHotels(); // initial render
+  // Date filter applies only when button is clicked
+  applyFilters.addEventListener("click", renderHotels);
+  
+  // Initial render: show all hotels
+  checkinInput.value = "";
+  renderHotels();
   
