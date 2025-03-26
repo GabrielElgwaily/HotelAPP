@@ -24,36 +24,41 @@ const hotels = [
   const checkinInput = document.getElementById("checkin");
   const applyFilters = document.getElementById("applyFilters");
   
-  function renderHotels() {
+  function renderHotels(applyDateFilter = false) {
     const starValue = starFilter.value;
     const checkinDate = checkinInput.value;
     hotelGrid.innerHTML = "";
   
     const filtered = hotels.filter(hotel => {
       const matchesStar = starValue === "all" || hotel.stars == starValue;
-      const matchesDate = !checkinDate || hotel.availableDates.includes(checkinDate);
+      const matchesDate = !applyDateFilter || hotel.availableDates.includes(checkinDate);
       return matchesStar && matchesDate;
     });
+  
+    if (filtered.length === 0) {
+      hotelGrid.innerHTML = "<p>No hotels match the selected filters.</p>";
+      return;
+    }
   
     filtered.forEach(hotel => {
       const card = document.createElement("div");
       card.className = "hotelCard";
       card.innerHTML = `
-        <img src="${hotel.image}" alt="${hotel.name}" />
-        <h3>${hotel.name}</h3>
-        <p>${"★".repeat(hotel.stars)}</p>
+        <img src="\${hotel.image}" alt="\${hotel.name}" />
+        <h3>\${hotel.name}</h3>
+        <p>\${"★".repeat(hotel.stars)}</p>
       `;
       hotelGrid.appendChild(card);
     });
   }
   
-  // Star filter updates immediately
-  starFilter.addEventListener("change", renderHotels);
+  // Only filters by star rating immediately
+  starFilter.addEventListener("change", () => renderHotels(false));
   
-  // Date filter applies only when button is clicked
-  applyFilters.addEventListener("click", renderHotels);
+  // Apply date filter only on button click
+  applyFilters.addEventListener("click", () => renderHotels(true));
   
-  // Initial render: show all hotels
+  // Initial render: show all hotels (no date filtering)
   checkinInput.value = "";
-  renderHotels();
+  renderHotels(false);
   
