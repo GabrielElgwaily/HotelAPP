@@ -2,19 +2,19 @@ const hotels = [
     {
       name: "Sunrise Resort",
       stars: 5,
-      image: "https://via.placeholder.com/300x200?text=Sunrise+Resort",
+      image: "https://www.intechnic.com/hubfs/Blog/Featured%20Images/Best%20Hotel%20Website%20Designs.jpg",
       availableDates: ["2025-04-01", "2025-04-02", "2025-04-03"]
     },
     {
       name: "Budget Inn",
       stars: 3,
-      image: "https://via.placeholder.com/300x200?text=Budget+Inn",
+      image: "https://www.intechnic.com/hubfs/Blog/Featured%20Images/Best%20Hotel%20Website%20Designs.jpg",
       availableDates: ["2025-04-01", "2025-04-04"]
     },
     {
       name: "Cityscape Hotel",
       stars: 4,
-      image: "https://via.placeholder.com/300x200?text=Cityscape+Hotel",
+      image: "https://www.intechnic.com/hubfs/Blog/Featured%20Images/Best%20Hotel%20Website%20Designs.jpg",
       availableDates: ["2025-04-02", "2025-04-03"]
     }
   ];
