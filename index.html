@@ -1,13 +1,137 @@
-<section id="filters">
-  <label for="starFilter">Star Rating:</label>
-  <select id="starFilter">
-    <option value="all">All</option>
-    <option value="5">★★★★★</option>
-    <option value="4">★★★★</option>
-    <option value="3">★★★</option>
-  </select>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>eHotel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>eHotel</h1>
+    </div>
+    <div class="header-buttons">
+      <a href="admin.html" class="btn-header">Admin</a>
+      <a href="employee.html" class="btn-header">Employee</a>
+    </div>
+  </header>
 
-  <label for="checkin">Check-in:</label>
-  <input type="date" id="checkin" />
-  <button id="applyFilters">Enter</button>
-</section>
+  <!-- Filters Section -->
+  <section class="filters">
+    <div class="filter-group">
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" />
+    </div>
+    <div class="filter-group">
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" />
+    </div>
+    <div class="filter-group">
+      <label for="capacity">Room Capacity:</label>
+      <select id="capacity">
+        <option value="any">Any</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="location">Location:</label>
+      <select id="location">
+        <option value="any">Any</option>
+        <option value="Ottawa">Ottawa</option>
+        <option value="London">London</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="price">Price Range:</label>
+      <select id="price">
+        <option value="all">All</option>
+        <option value="100">Under 100</option>
+        <option value="200">Under 200</option>
+        <option value="300">Under 300</option>
+        <option value="300plus">300+</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="roomsInHotel">Rooms in Hotel:</label>
+      <select id="roomsInHotel">
+        <option value="all">All</option>
+        <option value="10">Under 10</option>
+        <option value="20">Under 20</option>
+        <option value="30">Under 30</option>
+        <option value="30plus">30+</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="hotelType">Hotel Type:</label>
+      <select id="hotelType">
+        <option value="all">All</option>
+        <option value="Hotel">Hotel</option>
+        <option value="Motel">Motel</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="hotelChain">Hotel Chain:</label>
+      <select id="hotelChain">
+        <option value="all">All</option>
+        <option value="Marriot">Marriot</option>
+        <option value="Ritz">Ritz</option>
+        <option value="Super8">Super8</option>
+      </select>
+    </div>
+    <button id="applyFilters" class="apply-btn">Apply Filters</button>
+  </section>
+
+  <!-- Hotel Grid Section -->
+  <section id="hotelGrid" class="hotel-grid">
+    <!-- JavaScript will populate hotels here -->
+  </section>
+
+  <!-- Modal for Hotel Details -->
+  <div id="hotelModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <img id="modalImage" src="" alt="Hotel" class="modal-image" />
+
+      <!-- We can display chosen filters or relevant details here -->
+      <div class="modal-filters">
+        <p id="modalDates"></p>
+        <p id="modalCapacity"></p>
+        <p id="modalLocation"></p>
+        <p id="modalPrice"></p>
+        <p id="modalRoomsInHotel"></p>
+        <p id="modalHotelType"></p>
+        <p id="modalHotelChain"></p>
+      </div>
+
+      <!-- Booking Info -->
+      <div class="booking-section">
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput" placeholder="Your Name" />
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" placeholder="e.g. 123-456-7890" />
+
+        <label for="creditCard">Credit Card Number:</label>
+        <input type="text" id="creditCard" placeholder="XXXX-XXXX-XXXX-XXXX" />
+
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" placeholder="123" />
+
+        <label for="exp">Exp:</label>
+        <input type="text" id="exp" placeholder="MM/YY" />
+
+        <p>Total Price: <span id="modalTotalPrice"></span></p>
+        <button id="bookNow" class="book-btn">Book Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
