@@ -113,7 +113,7 @@ function renderHotels(hotels) {
       <div class="hotel-info">
         <h3>${hotel.name}</h3>
         <p>${hotel.roomType}</p>
-        <p>Price: $${hotel.price}</p>
+        <p>Price per night: $${hotel.price}</p>
       </div>
     `;
 
@@ -130,14 +130,28 @@ function renderHotels(hotels) {
 function openModal(hotel) {
   hotelModal.style.display = "block";
   modalImage.src = hotel.image;
-  modalDates.textContent = `Dates: ${startDate.value || "N/A"} - ${endDate.value || "N/A"}`;
+  
+  // Calculate number of nights based on start and end dates
+  let nightsText = "";
+  let totalPrice = hotel.price;
+  if (startDate.value && endDate.value) {
+    const start = new Date(startDate.value);
+    const end = new Date(endDate.value);
+    let nights = Math.round((end - start) / (1000 * 60 * 60 * 24));
+    // Ensure at least 1 night if dates are the same or invalid
+    if (nights < 1) nights = 1;
+    nightsText = ` (${nights} night${nights > 1 ? "s" : ""})`;
+    totalPrice = hotel.price * nights;
+  }
+  
+  modalDates.textContent = `Dates: ${startDate.value || "N/A"} - ${endDate.value || "N/A"}${nightsText}`;
   modalCapacity.textContent = `Capacity: ${hotel.capacity}`;
   modalLocation.textContent = `Location: ${hotel.location}`;
   modalPrice.textContent = `Price: $${hotel.price}`;
   modalRoomsInHotel.textContent = `Rooms in the Hotel: ${hotel.roomsInHotel}`;
   modalHotelType.textContent = `Hotel Type: ${hotel.hotelType}`;
   modalHotelChain.textContent = `Hotel Chain: ${hotel.hotelChain}`;
-  modalTotalPrice.textContent = `$${hotel.price}`;
+  modalTotalPrice.textContent = `$${totalPrice}`;
 }
 
 // Close modal event
