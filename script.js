@@ -178,7 +178,6 @@ function applyFilters() {
     if (priceValue === "300plus") {
       filteredHotels = filteredHotels.filter((hotel) => hotel.price >= 300);
     } else {
-      // Convert string to number (e.g. "100" -> 100)
       const priceNum = Number(priceValue);
       filteredHotels = filteredHotels.filter((hotel) => hotel.price < priceNum);
     }
