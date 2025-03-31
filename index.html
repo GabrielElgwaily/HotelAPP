@@ -14,7 +14,8 @@
     </div>
     <div class="header-buttons">
       <a href="admin.html" class="btn-header">Admin</a>
-      <a href="employee.html" class="btn-header">Employee</a>
+      <!-- Changed employee button from a link to a button -->
+      <button id="employeeBtn" class="btn-header">Employee</button>
     </div>
   </header>
 
@@ -129,6 +130,19 @@
 
         <p>Total Price: <span id="modalTotalPrice"></span></p>
         <button id="bookNow" class="book-btn">Book Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Employee Modal -->
+  <div id="employeeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeEmployeeModal">&times;</span>
+      <h2>Which hotel chain do you work for?</h2>
+      <div class="employee-buttons">
+        <button class="employee-chain-btn" data-chain="Marriot">Marriot</button>
+        <button class="employee-chain-btn" data-chain="Ritz">Ritz</button>
+        <button class="employee-chain-btn" data-chain="Super8">Super8</button>
       </div>
     </div>
   </div>

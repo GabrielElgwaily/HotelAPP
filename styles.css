@@ -28,18 +28,23 @@ header .logo h1 {
   margin: 0;
 }
 
-.header-buttons a {
+/* Header Buttons (both <a> and <button> use same styling) */
+.header-buttons a,
+.header-buttons button {
   font-size: 16px;
   color: #004080;
-  text-decoration: none;
-  margin-left: 20px;
+  background: transparent;
   padding: 8px 16px;
   border: 1px solid #004080;
   border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 20px;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.header-buttons a:hover {
+.header-buttons a:hover,
+.header-buttons button:hover {
   background-color: #004080;
   color: #fff;
 }
@@ -220,4 +225,31 @@ header .logo h1 {
 
 .book-btn:hover {
   background-color: #003366;
+}
+
+/* Employee Modal Styles */
+/* Container for the employee buttons arranged in a row */
+.employee-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Employee Modal Buttons – exactly the same as the admin button styling */
+.employee-chain-btn {
+  font-size: 16px;
+  color: #004080;
+  background: transparent;
+  padding: 8px 16px;
+  border: 1px solid #004080;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.employee-chain-btn:hover {
+  background-color: #004080;
+  color: #fff;
 }

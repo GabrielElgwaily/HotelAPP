@@ -78,7 +78,7 @@ const hotelsData = [
 const hotelGrid = document.getElementById("hotelGrid");
 const applyFiltersBtn = document.getElementById("applyFilters");
 
-// Modal elements
+// Modal elements for hotel details
 const hotelModal = document.getElementById("hotelModal");
 const closeModalBtn = document.getElementById("closeModal");
 const modalImage = document.getElementById("modalImage");
@@ -113,7 +113,7 @@ function renderHotels(hotels) {
       <div class="hotel-info">
         <h3>${hotel.name}</h3>
         <p>${hotel.roomType}</p>
-        <p>Price per night: $${hotel.price}</p>
+        <p>Price: $${hotel.price}</p>
       </div>
     `;
 
@@ -126,7 +126,7 @@ function renderHotels(hotels) {
   });
 }
 
-// Opens the modal and populates it with hotel data
+// Opens the hotel details modal and populates it with hotel data
 function openModal(hotel) {
   hotelModal.style.display = "block";
   modalImage.src = hotel.image;
@@ -138,7 +138,6 @@ function openModal(hotel) {
     const start = new Date(startDate.value);
     const end = new Date(endDate.value);
     let nights = Math.round((end - start) / (1000 * 60 * 60 * 24));
-    // Ensure at least 1 night if dates are the same or invalid
     if (nights < 1) nights = 1;
     nightsText = ` (${nights} night${nights > 1 ? "s" : ""})`;
     totalPrice = hotel.price * nights;
@@ -154,17 +153,17 @@ function openModal(hotel) {
   modalTotalPrice.textContent = `$${totalPrice}`;
 }
 
-// Close modal event
+// Close hotel modal event
 closeModalBtn.onclick = function() {
   hotelModal.style.display = "none";
 };
 
-// Close modal if user clicks anywhere outside the modal content
-window.onclick = function(event) {
+// Close hotel modal if user clicks anywhere outside the modal content
+window.addEventListener("click", function(event) {
   if (event.target === hotelModal) {
     hotelModal.style.display = "none";
   }
-};
+});
 
 // Filter logic
 function applyFilters() {
@@ -233,3 +232,38 @@ renderHotels(hotelsData);
 
 // Event listener for applying filters
 applyFiltersBtn.addEventListener("click", applyFilters);
+
+//
+// Employee Modal Functionality
+//
+const employeeBtn = document.getElementById("employeeBtn");
+const employeeModal = document.getElementById("employeeModal");
+const closeEmployeeModal = document.getElementById("closeEmployeeModal");
+const employeeChainButtons = document.querySelectorAll(".employee-chain-btn");
+
+// Open employee modal on button click
+employeeBtn.addEventListener("click", () => {
+  employeeModal.style.display = "block";
+});
+
+// Close employee modal on close button click
+closeEmployeeModal.addEventListener("click", () => {
+  employeeModal.style.display = "none";
+});
+
+// When an employee selects a hotel chain, set the filter and update the grid
+employeeChainButtons.forEach(button => {
+  button.addEventListener("click", (e) => {
+    const chain = e.target.getAttribute("data-chain");
+    hotelChainSelect.value = chain;
+    applyFilters();
+    employeeModal.style.display = "none";
+  });
+});
+
+// Close employee modal if user clicks outside of it
+window.addEventListener("click", (event) => {
+  if (event.target === employeeModal) {
+    employeeModal.style.display = "none";
+  }
+});
