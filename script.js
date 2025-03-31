@@ -113,7 +113,7 @@ function renderHotels(hotels) {
       <div class="hotel-info">
         <h3>${hotel.name}</h3>
         <p>${hotel.roomType}</p>
-        <p>Price: $${hotel.price}</p>
+        <p>$${hotel.price} per night</p>
       </div>
     `;
 
